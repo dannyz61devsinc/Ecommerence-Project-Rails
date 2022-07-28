@@ -1,0 +1,53 @@
+current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/sqlite-1.0.2/ext/sqlite
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220727-13804-ofqrxn.rb extconf.rb
+checking for malloc()... yes
+checking for free()... yes
+creating Makefile
+
+current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/sqlite-1.0.2/ext/sqlite
+make "DESTDIR=" clean
+
+current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/sqlite-1.0.2/ext/sqlite
+make "DESTDIR="
+compiling main.c
+compiling ruby_sqlite3.c
+compiling ruby_sqlite3_stmt.c
+In file included from /usr/include/ruby-2.7.0/ruby.h:33,
+                 from ruby_sqlite3_stmt.c:1:
+ruby_sqlite3_stmt.c: In function ‘init_sqlite3_stmt’:
+/usr/include/ruby-2.7.0/ruby/ruby.h:2799:117: warning: passing argument 3 of ‘rb_define_method1’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 2799 | #define rb_define_method(klass, mid, func, arity) rb_define_method_choose_prototypem3((arity),(func))((klass),(mid),(func),(arity));
+      |                                                                                                                     ^~~~~~
+      |                                                                                                                     |
+      |                                                                                                                     VALUE (*)(VALUE) {aka long unsigned int (*)(long unsigned int)}
+ruby_sqlite3_stmt.c:57:5: note: in expansion of macro ‘rb_define_method’
+   57 |     rb_define_method(cls, "columnType",   m_columns, 1);
+      |     ^~~~~~~~~~~~~~~~
+In file included from /usr/include/ruby-2.7.0/ruby/ruby.h:2148,
+                 from /usr/include/ruby-2.7.0/ruby.h:33,
+                 from ruby_sqlite3_stmt.c:1:
+/usr/include/ruby-2.7.0/ruby/ruby.h:2775:27: note: expected ‘VALUE (*)(VALUE,  VALUE)’ {aka ‘long unsigned int (*)(long unsigned int,  long unsigned int)’} but argument is of type ‘VALUE (*)(VALUE)’ {aka ‘long unsigned int (*)(long unsigned int)’}
+ 2775 | RB_METHOD_DEFINITION_DECL(rb_define_method, (2,3), (VALUE klass, const char *name), (klass, name))
+      |                           ^~~~~~~~~~~~~~~~
+/usr/include/ruby-2.7.0/ruby/intern.h:1042:82: note: in definition of macro ‘RB_METHOD_DEFINITION_DECL_C’
+ 1042 |     __attribute__((__unused__,__weakref__(#def),__nonnull__ nonnull))static void defname(RB_UNWRAP_MACRO decl,VALUE(*func)funcargs,int arity);
+      |                                                                                  ^~~~~~~
+/usr/include/ruby-2.7.0/ruby/intern.h:1075:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL_1’
+ 1075 | RB_METHOD_DEFINITION_DECL_1(def,nonnull,def##1 ,1 ,decl,vars,(VALUE,VALUE)) \
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/ruby-2.7.0/ruby/ruby.h:2775:1: note: in expansion of macro ‘RB_METHOD_DEFINITION_DECL’
+ 2775 | RB_METHOD_DEFINITION_DECL(rb_define_method, (2,3), (VALUE klass, const char *name), (klass, name))
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~
+compiling sqlite3_dist.c
+sqlite3_dist.c: In function ‘sqlite3_lock_event_handlers’:
+sqlite3_dist.c:155767:32: warning: assignment to ‘int (*)(void *, int,  int)’ from incompatible pointer type ‘int (*)(void *, int)’ [-Wincompatible-pointer-types]
+155767 |   db->lockEventHandlers.busy   = xBusy;
+       |                                ^
+sqlite3_dist.c:155768:32: warning: assignment to ‘int (*)(void *, int,  int)’ from incompatible pointer type ‘int (*)(void *, int)’ [-Wincompatible-pointer-types]
+155768 |   db->lockEventHandlers.unlock = xUnlock;
+       |                                ^
+linking shared-object sqlite/sqlite.so
+
+current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/sqlite-1.0.2/ext/sqlite
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 sqlite.so ./.gem.20220727-13804-oigfrq/sqlite

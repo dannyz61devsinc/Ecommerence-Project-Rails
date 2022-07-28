@@ -1,0 +1,9 @@
+<h1>Adding a Product</h1>
+<%if @product.errors.any?%>
+  <h2>Errors: </h2>
+  <% @product.errors.full_messages.each do |message| %>
+    <li><%= message%></li>
+  <%end%>
+  <br><br>
+<%end%>
+<%=render partial: 'form' ,:locals => {url: product_index_path }%>
