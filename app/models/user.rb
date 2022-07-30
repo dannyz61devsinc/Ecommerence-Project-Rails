@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products
   has_many :comments, dependent: :destroy
-  has_many :carts, dependent: :destroy
+  has_one :cart, dependent: :destroy
 
 
   has_one_attached :profile_image
