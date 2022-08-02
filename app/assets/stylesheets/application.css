@@ -40,3 +40,15 @@
   background-color: #04AA6D;
   color: white;
 }
+.topnav > img{
+  length:60px;
+  height:60px
+}
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}

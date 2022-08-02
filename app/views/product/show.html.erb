@@ -10,12 +10,19 @@
  <strong> Description: </strong><%= @product.description%> <br>
 
  <strong> Price:</strong> <%= @product.price%>Rs-/ <br>
+
+
   <%if user_signed_in?%>
     <% if @product.user_id == current_user.id%>
          <%=link_to "Edit Product",edit_product_path(@product)%>
          <%=link_to "Delete Product",product_path(@product),method: :delete%>
      <%end%>
-  <%end%>
+  <%end%> 
+     <%= link_to "Add to cart",product_product_cart_index_path(@product),method: :create%>
+
+<br>
+ <%=link_to "Buy Now",product_order_product_index_path(@product),method: :create%>   
+  
 <%if user_signed_in?%>
   <%= form_with model: [@product,@comment] do |f|%>
    <%= f.text_field :body%>

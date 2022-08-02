@@ -12,6 +12,7 @@ class ProductController < ApplicationController
 
   def show
     @comment = Comment.new
+    @product_cart = ProductCart.new
     @comments = @product.comments
   end
 
