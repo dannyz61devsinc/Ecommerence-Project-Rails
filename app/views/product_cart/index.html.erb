@@ -1,18 +1,16 @@
 <h1>My Cart</h1>
 
-
+<% if !current_user.cart.nil?%>
   <% @product_cart.each do |cart|%><br>
         <strong><%#=current.cart.id%></strong><br>
       <strong>  Name: </strong><%= cart.product.name%><br>
       <strong>  Quantity: </strong><%=cart.quantity%> <br>
       <strong> Description:  </strong><%= cart.product.description%><br>
- <%
-=begin%>
- <%=link_to "checkout",checkout_path(product),method: :create,remote:true%> 
-<%
-=end%>
-<%= link_to 'Edit',edit_product_cart_path(cart)%>
- <%=link_to "Delete" ,product_cart_path(cart),method: :delete%>     
+      <%= link_to 'Edit',edit_product_cart_path(cart)%>
+      <%=link_to "Delete" ,product_cart_path(cart),method: :delete%>   
+       <%=link_to "checkout",product_checkout_create_path(cart.product),method: :post,remote: true%>
+  
     <br><br><hr>
+  <%end%>
 <%end%>
   

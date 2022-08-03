@@ -3,7 +3,11 @@
 class ProductCartController < ApplicationController
   before_action :set_product_cart ,only:[ :edit, :update, :destroy]
   def index
+    if user_signed_in?
+      if !current_user.cart.nil?
     @product_cart = ProductCart.where(cart_id: current_user.cart.id)
+      end
+    end
   end
 
   def create
@@ -12,7 +16,7 @@ class ProductCartController < ApplicationController
       if @product.user != current_user
         if current_user.cart.nil?
           @cart = Cart.create(user_id: current_user.id)
-          @product_cart = ProductCart.new(cart_id: current_user.cart.id, product_id: @product.id, quantity: 1)
+          @product_cart = ProductCart.new(cart_id: @cart.id, product_id: @product.id, quantity: 1)
           
         else
           @product_cart = ProductCart.new(cart_id: current_user.cart.id, product_id: @product.id, quantity: 1)
