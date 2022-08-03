@@ -1,8 +1,11 @@
 <%# <h1>Product#index</h1> %>
+
 <% if user_signed_in?%>
-<p>Hi,<strong><%=current_user.name%><strong</p><br><br>
+<p>Hi,<strong><%=current_user.name%>
+<%=current_user.stripe_customer_id%><strong>
+</p><br><br>
 <%=link_to "Add Product",new_product_path(@product)%>
-  <%=%>
+
 <%end%>
 <br>
 <h1> All Products</h1>

@@ -248,6 +248,7 @@ DEPENDENCIES
   spring (~> 1.1)
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  stripe
   stripe-rails
   turbolinks (~> 5)
   tzinfo-data
