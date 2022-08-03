@@ -1,3 +1,0 @@
-current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/mimemagic-0.3.10/ext/mimemagic
-/usr/bin/ruby2.7 -I/usr/lib/ruby/2.7.0/rubygems -rrubygems /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/rake-13.0.1/exe/rake RUBYARCHDIR\=/home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/extensions/x86_64-linux/2.7.0/mimemagic-0.3.10 RUBYLIBDIR\=/home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/extensions/x86_64-linux/2.7.0/mimemagic-0.3.10
-mkdir -p /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/extensions/x86_64-linux/2.7.0/mimemagic-0.3.10/mimemagic

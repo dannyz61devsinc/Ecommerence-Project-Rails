@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
+require 'active_storage/engine'
 
 require 'rails/all'
 
@@ -8,6 +11,8 @@ Bundler.require(*Rails.groups)
 
 module EcommerenceProject
   class Application < Rails::Application
+    config.action_mailer.default_url_options = { host: 'http://localhost:3000/' }
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
