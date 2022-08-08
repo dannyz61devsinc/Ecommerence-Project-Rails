@@ -9,12 +9,23 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
+  validates :name, presence: true
 
   has_one_attached :profile_image
+   validate :check_image_type
+
+   def check_image_type
+    if profile_image.attached? && !profile_image.content_type.in?(%w( image/jpeg  image/png image/jpg))
+      errors.add(:profile_image,'must be a JPEG or PNG')
+    elsif !profile_image.attached?
+      errors.add(:profile_image,'must cannot be empty')
+    end
+   end
+   
 
 
   def profile_image_thumbnail
-    if profile_image.attached?
+    if profile_image.attached? && profile_image.content_type.in?(%w( image/jpeg  image/png image/jpg))
       profile_image.variant(resize: '60x60!').processed
     else
       '/default_profile.jpg'
