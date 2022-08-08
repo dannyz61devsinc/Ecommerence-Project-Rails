@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     resources :order_product, only: %i[new create]
     resources :product_cart, only: %i[new create]
     resources :comments
-    post "checkout/create", to: "checkouts#create"
-
+    post 'checkout/create', to: 'checkouts#create'
   end
 
   resources :cart

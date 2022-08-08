@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class OrderController < ApplicationController
+  before_action :authenticate_user!
+
   def index; end
 
   def new
@@ -8,7 +10,7 @@ class OrderController < ApplicationController
   end
 
   def create
-    @order = Order.create(user_id: current_user.id)
+    @order = Order.new(user_id: current_user.id)
     if @order.save
       redirect_to order_index_path, notice: 'order was successfully created.'
     else

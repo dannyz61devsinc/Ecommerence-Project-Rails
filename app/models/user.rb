@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+
   def profile_image_thumbnail
     if profile_image.attached?
       profile_image.variant(resize: '60x60!').processed
@@ -24,10 +25,8 @@ class User < ApplicationRecord
     email
   end
 
- after_create do
+  after_create do
     customer = Stripe::Customer.create(email: email)
-    update(stripe_customer_id: customer.id) 
+    update(stripe_customer_id: customer.id)
   end
-  
-  
 end
