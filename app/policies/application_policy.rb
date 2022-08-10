@@ -8,29 +8,23 @@ class ApplicationPolicy
     @record = record
   end
 
-  def index?
-  end
+  def index?; end
 
-  def show?
-  end
+  def show?; end
 
-  def create?
-    
-  end
+  def create?; end
 
   def new?
     create?
   end
 
-  def update?
-  end
+  def update?; end
 
   def edit?
     update?
   end
 
-  def destroy?
-  end
+  def destroy?; end
 
   class Scope
     def initialize(user, scope)

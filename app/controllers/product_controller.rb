@@ -54,6 +54,8 @@ class ProductController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => e
+    redirect_to root_path, notice: 'record_not_found'
   end
 
   def param_for_product

@@ -9,7 +9,11 @@ class ProductCartController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
+    begin
+      @product = Product.find(params[:product_id])
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, notice: 'record_not_found'
+    end
     if current_user.cart.nil?
       @cart = Cart.create(user_id: current_user.id)
       @product_cart = ProductCart.new(cart_id: @cart.id, product_id: @product.id, quantity: 1)
@@ -56,5 +60,7 @@ class ProductCartController < ApplicationController
 
   def set_product_cart
     @product_cart = ProductCart.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => e
+    redirect_to root_path, notice: 'record_not_found'
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :search ,only: [:index]
+  resources :search, only: [:index]
   resources :product do
     resources :order_product, only: %i[new create]
     resources :product_cart, only: %i[new create]

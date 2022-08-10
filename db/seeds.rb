@@ -9,8 +9,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user1 = User.create!(name: 'Danial', email: 'langah61@gmail.com', password: '123456')
-                  #    user1.avatar.attach(io: File.open(Rails.root.join('app/assets/images/cat.jpg')),
-                  # filename: 'cat.jpg')
+#    user1.avatar.attach(io: File.open(Rails.root.join('app/assets/images/cat.jpg')),
+# filename: 'cat.jpg')
 
 user2 = User.create!(name: 'langah', email: 'danial.zaib@devsinc.com', password: '123456')
 

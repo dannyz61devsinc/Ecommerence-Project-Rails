@@ -4,7 +4,11 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    product = Product.find(params[:product_id])
+    begin
+      product = Product.find(params[:product_id])
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, notice: 'record_not_found'
+    end
     @session = Stripe::Checkout::Session.create({
                                                   payment_method_types: ['card'],
                                                   line_items: [{
