@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'search/index'
+  resources :search ,only: [:index]
   resources :product do
     resources :order_product, only: %i[new create]
     resources :product_cart, only: %i[new create]
     resources :comments
-    post 'checkout/create', to: 'checkouts#create'
+    # post 'checkout/create', to: 'checkouts#create'
+    resource :checkout, only: [:create]
   end
 
   resources :cart

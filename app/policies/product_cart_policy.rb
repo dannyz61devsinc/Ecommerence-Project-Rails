@@ -13,7 +13,7 @@ class ProductCartPolicy < ApplicationPolicy
   end
 
   def create?
-    current_user != @product.user
+    @user != @record.product.user
   end
 
   def update?

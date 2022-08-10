@@ -8,11 +8,7 @@
 </div>
   <div class="field">
   <h5>Upload Profile Picture:</h5>
-   <%if resource.profile_image.attached?%>
-  <%f.hidden_field :profile_image, :value => resource.profile_image %>
-   <%else%>
   <%=f.file_field :profile_image%>
-  <%end%>
   </div>
   <br>
   <div class="field">

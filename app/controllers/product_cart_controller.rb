@@ -10,13 +10,13 @@ class ProductCartController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    authorize @product
     if current_user.cart.nil?
       @cart = Cart.create(user_id: current_user.id)
       @product_cart = ProductCart.new(cart_id: @cart.id, product_id: @product.id, quantity: 1)
     else
       @product_cart = ProductCart.new(cart_id: current_user.cart.id, product_id: @product.id, quantity: 1)
     end
+    authorize @product_cart
     if @product_cart.save
       redirect_to product_cart_index_path, notice: 'cart was successfully created.'
     else
