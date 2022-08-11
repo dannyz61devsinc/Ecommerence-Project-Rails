@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   resources :cart
   devise_for :users
   resources :order
-  # resources :search
   resources :order_product, only: [:show]
   resources :product_cart, only: %i[show destroy index edit update]
-
+resources :webhooks ,only: [:create]
   root to: 'product#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

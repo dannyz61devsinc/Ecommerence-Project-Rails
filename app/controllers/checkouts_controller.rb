@@ -6,23 +6,21 @@ class CheckoutsController < ApplicationController
   def create
     begin
       product = Product.find(params[:product_id])
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound
       redirect_to root_path, notice: 'record_not_found'
     end
-    @session = Stripe::Checkout::Session.create({
-                                                  payment_method_types: ['card'],
-                                                  line_items: [{
-                                                    name: product.name,
-                                                    amount: product.price,
-                                                    currency: 'usd',
-                                                    quantity: 1
-                                                  }],
-                                                  mode: 'payment',
-                                                  success_url: root_url,
-                                                  cancel_url: root_url
-                                                })
+    stripeobj = StripeService.new(product)
+    @session = stripeobj.call
     respond_to do |format|
       format.js
     end
+    # complete=stripeobj.status(@session)
+    flash[:alert] = @session
+
+    # if @session[:status] == 'complete'
+    #   flash[:alert]='Session is complete successfulyy'
+    # else
+
+    # end
   end
 end

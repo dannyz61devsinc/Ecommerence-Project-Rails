@@ -25,10 +25,7 @@
       <%= link_to 'Sign up' , new_user_registration_path %>
     <%end%>
 
-    <%=search_form_for(@query,url:search_index_path,method: :get ) do |form|%>
-    <%=form.search_field :name_i_cont_any, placeholder:"seacrh product"%>
-    <%=form.submit "Search Product"%>
-    <%end%>  
+   
     </div>
  
     <%= yield %>

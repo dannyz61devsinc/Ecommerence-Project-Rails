@@ -8,10 +8,10 @@ class OrderProductController < ApplicationController
 
   def create
     begin
-    @product = Product.find(params[:product_id])
-  rescue ActiveRecord::RecordNotFound =>e
-    redirect_to root_path,notice: 'record_not_found'
-  end
+      @product = Product.find(params[:product_id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path, notice: 'record_not_found'
+    end
     if @product.user != current_user
       @order = Order.create(user_id: current_user.id)
       @order_product = OrderProduct.create(order_id: @order.id, product_id: @product.id)
@@ -30,11 +30,9 @@ class OrderProductController < ApplicationController
   private
 
   def set_order
-    begin 
     @order = Order.find(params[:id])
-  rescue ActiveRecord::RecordNotFound =>e
-    redirect_to root_path,notice: 'record_not_found'
-  end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: 'record_not_found'
   end
 
   # def order_params

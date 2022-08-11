@@ -2,14 +2,10 @@
 
 class ProductController < ApplicationController
   before_action :find_product, only: %i[show edit destroy update]
-  before_action :set_query
 
   def index
-    @products = Product.all
-  end
-
-  def set_query
     @query = Product.ransack(params[:q])
+    @products = @query.result
   end
 
   def new
@@ -54,7 +50,7 @@ class ProductController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: 'record_not_found'
   end
 

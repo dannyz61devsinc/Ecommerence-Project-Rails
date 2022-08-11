@@ -22,7 +22,7 @@ class OrderController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: 'record_not_found'
   end
 

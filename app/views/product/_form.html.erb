@@ -1,6 +1,6 @@
 <%= form_for @product,url: url do |f|%>
 Name: <%= f.text_field :name%><br><br>
-Product Picture: <%=f.file_field :images,multiple: true, direct_upload: true%><br><br>
+Product Picture: <%=f.file_field :images,multiple: true%><br><br>
 Description: <%= f.text_field :description%><br><br>
 Price: <%= f.text_field :price%><br><br>
 <%=submit_tag%>

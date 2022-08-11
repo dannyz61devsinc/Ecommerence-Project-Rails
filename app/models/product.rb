@@ -12,4 +12,11 @@ class Product < ApplicationRecord
 
   validates :name, :price, :description, presence: true
   has_many_attached :images
+  validate :check_image_type
+
+  def check_image_type
+    images.each do |image|
+      errors.add(:image, 'must be a JPEG or PNG') unless image.content_type.in?(%w[image/jpeg image/png image/jpg])
+    end
+  end
 end

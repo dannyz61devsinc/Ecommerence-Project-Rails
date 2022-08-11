@@ -1,15 +1,4 @@
-<p>Show#index</p>
- <br>
-  <% (0...@product.images.count).each do |image|%>
- <%= image_tag(@product.images[image])%>
- <%end%>
- <br>
- <strong> <%=@product.id%> </strong> <br>
-
- <strong> Name: </strong><%= @product.name%> <br>
- <strong> Description: </strong><%= @product.description%> <br>
-
- <strong> Price:</strong> <%= @product.price%>Rs-/ <br>
+  <%=render 'details',product: @product%>
 
 
   <%if user_signed_in?%>
