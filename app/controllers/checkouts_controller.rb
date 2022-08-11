@@ -15,7 +15,7 @@ class CheckoutsController < ApplicationController
       format.js
     end
     # complete=stripeobj.status(@session)
-    flash[:alert] = @session
+
 
     # if @session[:status] == 'complete'
     #   flash[:alert]='Session is complete successfulyy'
