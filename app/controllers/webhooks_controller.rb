@@ -3,7 +3,7 @@ class WebhooksController < ApplicationController
 
 
   def create
-    payload = request.body.read
+    payload = request.body
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
 
