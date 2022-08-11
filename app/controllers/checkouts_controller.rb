@@ -16,7 +16,6 @@ class CheckoutsController < ApplicationController
     end
     # complete=stripeobj.status(@session)
 
-
     # if @session[:status] == 'complete'
     #   flash[:alert]='Session is complete successfulyy'
     # else

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :order
   resources :order_product, only: [:show]
   resources :product_cart, only: %i[show destroy index edit update]
-resources :webhooks ,only: [:create]
+  resources :webhooks, only: [:create]
   root to: 'product#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
