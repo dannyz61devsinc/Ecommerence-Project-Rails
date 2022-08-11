@@ -15,8 +15,8 @@ class StripeService
                                                     quantity: 1
                                                   }],
                                                   mode: 'payment',
-                                                  success_url: 'http://localhost:3000/',
-                                                  cancel_url: 'http://localhost:3000/'
+                                                  success_url: 'https://ecommerencedevsinc.herokuapp.com/',
+                                                  cancel_url: 'https://ecommerencedevsinc.herokuapp.com/'
                                                 })
   end
 
