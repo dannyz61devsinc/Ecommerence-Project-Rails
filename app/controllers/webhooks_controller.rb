@@ -3,8 +3,8 @@ class WebhooksController < ApplicationController
 
 
   def create
-    payload = request.raw_post
-    sig_header = request.raw_post.env['HTTP_STRIPE_SIGNATURE']
+    payload = request.body.read
+    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
 
     begin
@@ -24,7 +24,7 @@ class WebhooksController < ApplicationController
     # Handle the event
     case event.type
     when 'checkout.session.completed'
-      flash[:alert]='Session is complete successfulyy'
+      redirect_to order_index_path,notice: 'Session is complete successfulyy'
       session = event.data.object
       session_with_expand = Stripe::Checkout::Session.retrieve({ id: session.id, expand: ["line_items"]})
       session_with_expand.line_items.data.each do |line_item|
