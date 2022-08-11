@@ -1,5 +1,5 @@
 current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
-/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220808-23477-1c29ojz.rb extconf.rb
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220811-59458-o3nism.rb extconf.rb
 checking for -lstdc++... yes
 creating Makefile
 
@@ -13,4 +13,4 @@ linking shared-object unf_ext.so
 
 current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20220808-23477-1jq5rx4
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20220811-59458-kv6t1b
