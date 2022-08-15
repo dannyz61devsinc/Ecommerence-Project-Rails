@@ -19,10 +19,4 @@ class StripeService
                                                   cancel_url: 'https://ecommerencedevsinc.herokuapp.com/'
                                                 })
   end
-
-  # def status(session)
-  #   @complete = Stripe::Checkout::Session.retrieve(
-  #     session[:,
-  #   )
-  # end
 end

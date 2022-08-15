@@ -6,6 +6,10 @@ class OrderProductController < ApplicationController
   # end
   before_action :authenticate_user!
 
+  def index
+      @order_product = OrderProduct.where(order_id: Order.where(user_id: current_user.id))
+  end
+
   def create
     begin
       @product = Product.find(params[:product_id])

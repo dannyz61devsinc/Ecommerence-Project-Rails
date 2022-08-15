@@ -35,5 +35,6 @@ class User < ApplicationRecord
   after_create do
     customer = Stripe::Customer.create(email: email)
     update(stripe_customer_id: customer.id)
+    @cart = Cart.create(user_id: id)
   end
 end

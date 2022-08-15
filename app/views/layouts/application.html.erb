@@ -16,7 +16,7 @@
     <div class="topnav"> 
     <%= link_to 'Home' ,root_path %>
     <%= link_to 'My Cart' ,product_cart_index_path%>
-    <%= link_to 'My Orders' ,order_index_path %>
+    <%= link_to 'My Orders' ,order_product_index_path %>
     <% if user_signed_in?%>    
       <%= link_to 'Sign out' ,destroy_user_session_path ,method: :delete %>
      <%=image_tag(current_user.profile_image_thumbnail) %>

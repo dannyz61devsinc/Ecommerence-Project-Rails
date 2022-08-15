@@ -1,6 +1,11 @@
 <h1>My Cart</h1>
+<%if !user_signed_in?%>
+<p> you need to <%= link_to 'log in',new_user_session_path%> before you can checkout on product.</p>
+<%=debug session[:cart]%>
 
-<% if !current_user.cart.nil?%>
+
+<%else%>
+
   <% @product_cart.each do |cart|%><br>
         <strong><%#=current.cart.id%></strong><br>
       <strong>  Name: </strong><%= cart.product.name%><br>
@@ -8,9 +13,9 @@
       <strong> Description:  </strong><%= cart.product.description%><br>
       <%= link_to 'Edit',edit_product_cart_path(cart)%>
       <%=link_to "Delete" ,product_cart_path(cart),method: :delete%>   
-       <%=link_to "checkout", product_checkout_path(cart.product),method: :post,remote: true%>
+       <%=link_to "checkout", product_cart_checkout_path(cart),method: :post,remote: true%>
   
     <br><br><hr>
-  <%end%>
+<%end%>
 <%end%>
   
