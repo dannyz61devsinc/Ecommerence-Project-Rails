@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class OrderController < ApplicationController
-  before_action :authenticate_user!
 
   def index; end
 
@@ -22,8 +21,6 @@ class OrderController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: 'record_not_found'
   end
 
   def order_params

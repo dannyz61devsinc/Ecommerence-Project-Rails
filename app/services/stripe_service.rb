@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
 class StripeService
-  def initialize(product)
-    @product = product
+  def initialize(cart)
+    @cart = cart
   end
 
   def call
     @session = Stripe::Checkout::Session.create({
                                                   payment_method_types: ['card'],
                                                   line_items: [{
-                                                    name: @product.name,
-                                                    amount: @product.price,
+                                                    name: @cart.product.name,
+                                                    amount: @cart.product.price,
                                                     currency: 'usd',
-                                                    quantity: 1
+                                                    quantity: @cart.quantity
                                                   }],
                                                   mode: 'payment',
                                                   success_url: 'https://ecommerencedevsinc.herokuapp.com/',

@@ -38,13 +38,9 @@ class CommentsController < ApplicationController
 
   def find_comment
     @comment = @product.comments.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: 'record_not_found'
   end
 
   def set_comment
     @product = Product.find(params[:product_id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: 'record_not_found'
   end
 end

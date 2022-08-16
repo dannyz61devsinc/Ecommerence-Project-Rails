@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProductCartController < ApplicationController
+  skip_before_action :authenticate_user!
+
   before_action :set_product_cart, only: %i[edit update destroy]
   before_action :find_product, only: [:create]
   before_action :initialize_session
@@ -30,8 +32,6 @@ class ProductCartController < ApplicationController
 
   def find_product
     @product = Product.find(params[:product_id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: 'record_not_found'
   end
 
   def edit
@@ -70,7 +70,5 @@ class ProductCartController < ApplicationController
 
   def set_product_cart
     @product_cart = ProductCart.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: 'record_not_found'
   end
 end

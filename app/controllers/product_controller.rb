@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProductController < ApplicationController
+  skip_before_action :authenticate_user!
+
   before_action :find_product, only: %i[show edit destroy update]
 
   def index
@@ -50,8 +52,6 @@ class ProductController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: 'record_not_found'
   end
 
   def param_for_product

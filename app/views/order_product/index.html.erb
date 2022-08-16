@@ -1,15 +1,9 @@
  <% @order_product.each do |order|%><br>
-        <strong><%#=current.order.id%></strong><br>
+        <strong>Order No: <%=order.id%></strong><br><br>
       <strong>  Name: </strong><%= order.product.name%><br>
       <strong>  Quantity: </strong><%=order.quantity%> <br>
       <strong> Description:  </strong><%= order.product.description%><br>
-      <%
-=begin%>
- <%= link_to 'Edit',edit_product_order_path(order)%>
-      <%=link_to "Delete" ,product_order_path(order),method: :delete%>   
-       <%=link_to "checkout", product_order_checkout_path(order),method: :post,remote: true%> 
-<%
-=end%>
-  
+      <strong> Date & Time:  </strong><%= order.created_at.strftime("%I:%M :%p")%><br>
+
     <br><br><hr>
 <%end%>

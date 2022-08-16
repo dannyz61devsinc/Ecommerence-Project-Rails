@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+
   before_action :allow_permit_params, if: :devise_controller?
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from ActiveRecord::RecordNotFound,with: :record_error
 
   private
 
@@ -13,6 +16,11 @@ class ApplicationController < ActionController::Base
     tranfer_data_in_cart(@cart) unless @cart.nil?
     root_path
   end
+
+  def record_error
+  redirect_to root_path, notice: 'record_not_found' 
+  end
+  
 
   def tranfer_data_in_cart(cart)
     cart.each do |id|
