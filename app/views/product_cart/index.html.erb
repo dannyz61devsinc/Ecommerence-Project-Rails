@@ -3,7 +3,6 @@
 <p> you need to <%= link_to 'log in',new_user_session_path%> before you can checkout on product.</p>
 <%=debug session[:cart]%>
 
-
 <%else%>
 
   <% @product_cart.each do |cart|%><br>

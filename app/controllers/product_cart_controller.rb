@@ -7,13 +7,19 @@ class ProductCartController < ApplicationController
   before_action :find_product, only: [:create]
   before_action :initialize_session
 
+ 
+
   def index
     if user_signed_in?
+      
       @product_cart = ProductCart.where(cart_id: current_user.cart.id) unless current_user.cart.nil?
+      
     else
       @product_cart = session[:cart]
     end
   end
+
+  
 
   def create
     if !user_signed_in?

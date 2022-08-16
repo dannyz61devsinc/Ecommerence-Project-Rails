@@ -14,6 +14,7 @@ class StripeService
                                                     currency: 'usd',
                                                     quantity: @cart.quantity
                                                   }],
+                                                  allow_promotion_codes: true,
                                                   mode: 'payment',
                                                   success_url: 'https://ecommerencedevsinc.herokuapp.com/',
                                                   cancel_url: 'https://ecommerencedevsinc.herokuapp.com/'

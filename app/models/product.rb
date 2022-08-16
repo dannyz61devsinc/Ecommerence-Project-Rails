@@ -19,4 +19,11 @@ class Product < ApplicationRecord
       errors.add(:image, 'must be a JPEG or PNG') unless image.content_type.in?(%w[image/jpeg image/png image/jpg])
     end
   end
+
+  def to_builder
+    Jbuilder.new do |product|
+      product.price price
+      product.name name
+    end
+  end
 end

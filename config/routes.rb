@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :cart
   devise_for :users
   resources :order
-  resources :order_product, only: [:index,:show]
+  resources :order_product, only: %i[index show]
   resources :product_cart, only: %i[show destroy index edit update] do
     resource :checkout, only: [:create]
   end

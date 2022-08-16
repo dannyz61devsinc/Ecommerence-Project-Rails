@@ -10,7 +10,6 @@
      <%= link_to "Add to cart",product_product_cart_index_path(@product),method: :create%>
 
 <br>
- <%=link_to "Buy Now",product_order_product_index_path(@product),method: :create%>   
   
 <%if user_signed_in?%>
   <%= form_with model: [@product,@comment] do |f|%>

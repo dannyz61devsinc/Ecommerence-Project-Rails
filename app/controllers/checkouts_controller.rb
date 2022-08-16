@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class CheckoutsController < ApplicationController
-
   def create
     cart = ProductCart.find(params[:product_cart_id])
- 
+
     stripeobj = StripeService.new(cart)
     @session = stripeobj.call
     respond_to do |format|

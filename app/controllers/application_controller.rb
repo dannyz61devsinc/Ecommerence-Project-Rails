@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  rescue_from ActiveRecord::RecordNotFound,with: :record_error
+  rescue_from ActiveRecord::RecordNotFound, with: :record_error
+
+ 
 
   private
 
@@ -18,9 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   def record_error
-  redirect_to root_path, notice: 'record_not_found' 
+    redirect_to root_path, notice: 'record_not_found'
   end
-  
 
   def tranfer_data_in_cart(cart)
     cart.each do |id|
