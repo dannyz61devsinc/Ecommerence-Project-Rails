@@ -9,7 +9,7 @@ class CheckoutsController < ApplicationController
     respond_to do |format|
       format.js
     end
-    # generate_order(cart)
+    generate_order(cart)
   end
 
   def generate_order(cart)
