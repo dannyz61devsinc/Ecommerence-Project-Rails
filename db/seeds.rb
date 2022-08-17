@@ -8,15 +8,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1=User.first
-user2=User.find(1)
-# user1 = User.create!(name: 'Danial', email: 'langah61@gmail.com', password: '123456')
-# user1.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/1.jpg')),
-#                            filename: '1.jpg')
+user1 = User.create!(name: 'Danial', email: 'langah61@gmail.com', password: '123456')
+user1.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/1.jpg')),
+                           filename: '1.jpg')
 
-# user2 = User.create!(name: 'langah', email: 'danial.zaib@devsinc.com', password: '123456')
-# user2.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/2.jpg')),
-#                            filename: '2.jpg')
+user2 = User.create!(name: 'langah', email: 'danial.zaib@devsinc.com', password: '123456')
+user2.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/2.jpg')),
+                           filename: '2.jpg')
+
 product1 = Product.create(name: 'lovely Cream',
                           description: 'This is one of the amazing cream in the world you gonna love it by now.', price: 500, user_id: user1.id)
 product1.images.attach(io: File.open(Rails.root.join('app/assets/images/3.jpeg')),
