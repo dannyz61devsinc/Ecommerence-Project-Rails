@@ -9,7 +9,7 @@ class ProductCart < ApplicationRecord
   def to_builder
     Jbuilder.new do |cart|
       cart.product  product.price
-       cart.quantity quantity
+      cart.quantity quantity
     end
   end
 end

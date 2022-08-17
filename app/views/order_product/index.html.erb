@@ -1,4 +1,5 @@
  <% @order_product.each do |order|%><br>
+ <div class='card shadow-lg p-3 mb-5 bg-white rounded"'>
         <strong>Order No: <%=order.id%></strong><br><br>
       <strong>  Name: </strong><%= order.product.name%><br>
       <strong>  Quantity: </strong><%=order.quantity%> <br>
@@ -6,4 +7,5 @@
       <strong> Date & Time:  </strong><%= order.created_at.strftime("%I:%M :%p")%><br>
 
     <br><br><hr>
+    </div>
 <%end%>

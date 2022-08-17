@@ -1,15 +1,20 @@
-<%=render 'search'%>
-<% if user_signed_in?%>
-<p>Hi,<strong><%=current_user.name%>
-</p><br><br>
-<%=link_to "Add Product",new_product_path(@product)%>
-
-<%end%>
 <br>
-<h1> All Products</h1>
-<% @products.each do |product|%>
-
- <br>
- <%=render 'details' ,product: product%>
- <%= link_to "View Product",product_path(product) %>&nbsp&nbsp&nbsp
-<%end%> 
+<div class"search_bar"><%=render 'search' %></div>
+  <div class="container">
+    <div class="row"> 
+        <h1> All Products</h1>
+        <% if user_signed_in?%>
+        <div><%=link_to "Add Product",new_product_path(@product),:class => "btn btn-lg btn-secondary"%></div><br><br>
+        <%end%>
+      <% @products.each do |product|%>
+       <div class="col-md-4">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+         <div class="card-body">
+         <%=render 'details' ,product: product%>
+          <div><%= link_to "View Product",product_path(product), :class => "btn btn-secondary"%>&nbsp&nbsp&nbsp</div>
+          </div>
+        </div>
+        </div>
+        <%end%>   
+    </div>
+  </div>

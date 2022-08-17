@@ -1,7 +1,9 @@
 <%= form_for @product,url: url do |f|%>
-Name: <%= f.text_field :name%><br><br>
-Product Picture: <%=f.file_field :images,multiple: true%><br><br>
-Description: <%= f.text_field :description%><br><br>
-Price: <%= f.text_field :price%><br><br>
+<div class='card  p-3 mb-5'>
+<div>Name: <%= f.text_field :name,:class => 'form-control'%></div><br><br>
+<div>Product Picture: <%=f.file_field :images,multiple: true,:class => 'form-control'%></div><br><br>
+<div>Description: <%= f.text_field :description,:class => 'form-control'%></div><br><br>
+<div>Price: <%= f.text_field :price,:class => 'form-control'%></div><br><br>
 <%=submit_tag%>
+</div>
 <%end%>

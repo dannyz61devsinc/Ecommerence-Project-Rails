@@ -14,7 +14,7 @@ class CheckoutsController < ApplicationController
 
   def generate_order(cart)
     authorize cart
-    
+
     order = Order.create(user_id: current_user.id)
     OrderProduct.create(order_id: order.id, product_id: cart.product.id, quantity: cart.quantity)
     cart.destroy
