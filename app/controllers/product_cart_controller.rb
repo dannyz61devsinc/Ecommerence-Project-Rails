@@ -13,7 +13,7 @@ class ProductCartController < ApplicationController
       @product_cart = ProductCart.where(cart_id: current_user.cart.id) unless current_user.cart.nil?
 
     else
-      @product_cart = session[:cart]
+      @product_cart = Product.find(session[:cart])
     end
   end
 
