@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: 'product#index'
   resources :search, only: [:index]
   resources :product do
     resources :order_product, only: %i[new create]
@@ -16,6 +17,6 @@ Rails.application.routes.draw do
     resource :checkout, only: [:create]
   end
   resources :webhooks, only: [:create]
-  root to: 'product#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
