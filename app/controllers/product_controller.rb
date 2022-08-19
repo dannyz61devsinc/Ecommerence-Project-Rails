@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class ProductController < ApplicationController
+  skip_before_action :authenticate_user!
+
   before_action :find_product, only: %i[show edit destroy update]
+
   def index
-    @products = Product.all
+    @query = Product.ransack(params[:q])
+    @products = @query.result
   end
 
   def new
@@ -25,14 +29,18 @@ class ProductController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @product
+  end
 
   def destroy
+    authorize @product
     @product.destroy
     redirect_to :root
   end
 
   def update
+    authorize @product
     if @product.update(param_for_product)
       redirect_to :root
     else

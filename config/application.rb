@@ -11,6 +11,9 @@ Bundler.require(*Rails.groups)
 
 module EcommerenceProject
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     config.action_mailer.default_url_options = { host: 'http://localhost:3000/' }
 
     # Initialize configuration defaults for originally generated Rails version.

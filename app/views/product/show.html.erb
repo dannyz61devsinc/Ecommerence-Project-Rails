@@ -1,27 +1,17 @@
-<p>Show#index</p>
- <br>
-  <% (0...@product.images.count).each do |image|%>
- <%= image_tag(@product.images[image])%>
- <%end%>
- <br>
- <strong> <%=@product.id%> </strong> <br>
+<article class="container"><br><br>
+  
+  <%=render 'details',product: @product%>
 
- <strong> Name: </strong><%= @product.name%> <br>
- <strong> Description: </strong><%= @product.description%> <br>
-
- <strong> Price:</strong> <%= @product.price%>Rs-/ <br>
-
-
+<div class='d-flex justify-content-flex-start'>
   <%if user_signed_in?%>
     <% if @product.user_id == current_user.id%>
-         <%=link_to "Edit Product",edit_product_path(@product)%>
-         <%=link_to "Delete Product",product_path(@product),method: :delete%>
+        <div>  <%=link_to "Edit Product",edit_product_path(@product),:class => "btn btn-secondary"%></div>
+        <div>  <%=link_to "Delete Product",product_path(@product),method: :delete,:class => "btn btn-secondary"%></div>
      <%end%>
   <%end%> 
-     <%= link_to "Add to cart",product_product_cart_index_path(@product),method: :create%>
-
+   <div>  <%= link_to "Add to cart",product_product_cart_index_path(@product),method: :create,:class => "btn btn-secondary"%></div>
+</div>
 <br>
- <%=link_to "Buy Now",product_order_product_index_path(@product),method: :create%>   
   
 <%if user_signed_in?%>
   <%= form_with model: [@product,@comment] do |f|%>
@@ -34,8 +24,12 @@
 <%end%>
 
 <h2>Comments:</h2><br>
+
 <div id="comment_section">
 <%@comments.each do |comment|%>
+
 <%=render 'comments/comment',comment:comment%>
 <%end%>
+
 </div>
+</article>

@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
-  test "should get create" do
+  test 'should get create' do
     get subscriptions_create_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get subscriptions_new_url
     assert_response :success
   end
-
 end

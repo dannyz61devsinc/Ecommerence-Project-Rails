@@ -1,0 +1,21 @@
+[0;1;32m●[0m bluetooth.service - Bluetooth service
+     Loaded: loaded (/lib/systemd/system/bluetooth.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Wed 2022-08-17 17:03:35 PKT; 4h 33min ago
+       Docs: man:bluetoothd(8)
+   Main PID: 97641 (bluetoothd)
+     Status: "Running"
+      Tasks: 1 (limit: 18799)
+     Memory: 4.9M
+     CGroup: /system.slice/bluetooth.service
+             └─97641 /usr/lib/bluetooth/bluetoothd
+
+Aug 17 20:02:31 dev-Inspiron-15-5510 bluetoothd[97641]: /org/bluez/hci0/dev_1C_52_16_A4_4C_E2/sep1/fd5: fd(44) ready
+Aug 17 20:50:32 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mUnable to get io data for Headset Voice gateway: getpeername: Transport endpoint is not connected (107)[0m
+Aug 17 21:30:58 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31msocket(SEQPACKET, L2CAP): Too many open files (24)[0m
+Aug 17 21:30:58 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mNo reply to Open request[0m
+Aug 17 21:30:58 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mUnable to parse accept response[0m
+Aug 17 21:31:00 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31msocket(SEQPACKET, L2CAP): Too many open files (24)[0m
+Aug 17 21:31:00 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mNo reply to Open request[0m
+Aug 17 21:31:00 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mUnable to parse accept response[0m
+Aug 17 21:31:19 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mUnable to get io data for Headset Voice gateway: getpeername: Transport endpoint is not connected (107)[0m
+Aug 17 21:31:19 dev-Inspiron-15-5510 bluetoothd[97641]: [0;1;31m[0;1;39m[0;1;31mNo matching connection for device[0m

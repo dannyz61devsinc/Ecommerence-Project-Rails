@@ -1,0 +1,10 @@
+<div class=card-img-top> 
+ <% (0..product.images.count).each do |image|%>
+<%= image_tag(product.images[image])%>
+ <%end%> 
+ </div>
+ <br>
+<h5 class="card-title">Name:<%= product.name%></h5>  <br>
+  <p class="card-text"><strong>Description: </strong><%= product.description%></p>
+
+ <p class="card-text"><strong>Price:</strong><%= product.price%>Rs-/</p>

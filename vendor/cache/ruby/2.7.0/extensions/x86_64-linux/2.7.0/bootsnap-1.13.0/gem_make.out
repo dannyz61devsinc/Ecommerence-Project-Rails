@@ -1,5 +1,5 @@
 current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/bootsnap-1.13.0/ext/bootsnap
-/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220801-172791-1t0ye3.rb extconf.rb
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220811-59458-1vvduxs.rb extconf.rb
 creating Makefile
 
 current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/bootsnap-1.13.0/ext/bootsnap
@@ -12,4 +12,4 @@ linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/dev/EcommerenceProject/vendor/cache/ruby/2.7.0/gems/bootsnap-1.13.0/ext/bootsnap
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20220801-172791-1cvbcnj/bootsnap
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20220811-59458-17ynqz/bootsnap

@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: devsincdanny
+  api_key: '618449326259452'
+  api_secret: VP2J6yshVvYbkKVuR5wMge_mHHk
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: devsincdanny
+  api_key: '618449326259452'
+  api_secret: VP2J6yshVvYbkKVuR5wMge_mHHk
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: devsincdanny
+  api_key: '618449326259452'
+  api_secret: VP2J6yshVvYbkKVuR5wMge_mHHk
+  enhance_image_tag: true
+  static_file_support: false

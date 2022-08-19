@@ -1,25 +1,22 @@
 # frozen_string_literal: true
 
 class CheckoutsController < ApplicationController
-  before_action :authenticate_user!
   def create
-    product = Product.find(params[:product_id])
-    @session = Stripe::Checkout::Session.create({
-          payment_method_types: ['card'],
-          line_items: [{
-            name: product.name,
-            amount: product.price,
-            currency: 'usd',
-            quantity: 1
-          }],
-          mode: 'payment',
-          success_url:root_url,
-          cancel_url: root_url
-        })
+    cart = ProductCart.find(params[:product_cart_id])
+
+    stripeobj = StripeService.new(cart)
+    @session = stripeobj.call
     respond_to do |format|
       format.js
     end
-    
-    
+    generate_order(cart)
+  end
+
+  def generate_order(cart)
+    authorize cart
+
+    order = Order.create(user_id: current_user.id)
+    OrderProduct.create(order_id: order.id, product_id: cart.product.id, quantity: cart.quantity)
+    cart.destroy
   end
 end

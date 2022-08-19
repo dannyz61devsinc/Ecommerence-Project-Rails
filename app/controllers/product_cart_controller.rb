@@ -1,52 +1,58 @@
 # frozen_string_literal: true
 
 class ProductCartController < ApplicationController
-  before_action :set_product_cart ,only:[ :edit, :update, :destroy]
+  skip_before_action :authenticate_user!
+
+  before_action :set_product_cart, only: %i[edit update destroy]
+  before_action :find_product, only: [:create]
+  before_action :initialize_session
+
   def index
     if user_signed_in?
-      if !current_user.cart.nil?
-    @product_cart = ProductCart.where(cart_id: current_user.cart.id)
-      end
+
+      @product_cart = ProductCart.where(cart_id: current_user.cart.id) unless current_user.cart.nil?
+
+    else
+      @product_cart = Product.find(session[:cart])
     end
   end
 
   def create
-    @product = Product.find(params[:product_id])
-    if user_signed_in?
-      if @product.user != current_user
-        if current_user.cart.nil?
-          @cart = Cart.create(user_id: current_user.id)
-          @product_cart = ProductCart.new(cart_id: @cart.id, product_id: @product.id, quantity: 1)
-          
-        else
-          @product_cart = ProductCart.new(cart_id: current_user.cart.id, product_id: @product.id, quantity: 1)
-        end
-        if @product_cart.save
-          redirect_to product_cart_index_path, notice: 'cart was successfully created.'
-        else
-          redirect_to root_path, notice: 'cart was failed.'
-        end
-      else
-        redirect_to root_path, notice: 'cart was failed. You cannot add your products'
-      end
+    if !user_signed_in?
+      session[:cart] << @product.id unless session[:cart].include?(@product.id)
+      redirect_to product_cart_index_path, notice: 'Product was successfully created.'
     else
-      @product_cart = ProductCart.new(cart_id: current_user.cart, product_id: @product.id, quantity: 1)
+      @product_cart = ProductCart.new(cart_id: current_user.cart.id, product_id: @product.id, quantity: 1)
+      authorize @product_cart
+      if @product_cart.save
+        redirect_to product_cart_index_path, notice: 'cart was successfully created.'
+      else
+        redirect_to product_cart_index_path, notice: 'cart was failed. already Existed'
+      end
     end
   end
+
+  def find_product
+    @product = Product.find(params[:product_id])
+  end
+
   def edit
+    authorize @product_cart
   end
-  
-def update
-  if @product_cart.update(product_cart_prams)
-    redirect_to product_cart_index_path,notice: "Successfully updated"
-  else
-    redirect_to root_path,notice: "Failed updation"
+
+  def update
+    authorize @product_cart
+
+    if @product_cart.update(product_cart_prams)
+      redirect_to product_cart_index_path, notice: 'Successfully updated'
+    else
+      redirect_to root_path, notice: 'Failed updation'
+    end
   end
- 
-  
-end
 
   def destroy
+    authorize @product_cart
+
     if @product_cart.destroy
       redirect_to product_cart_index_path, notice: 'cart was Deleted.'
     else
@@ -55,10 +61,16 @@ end
   end
 
   private
+
+  def initialize_session
+    session[:cart] ||= []
+  end
+
   def product_cart_prams
     params.require(:product_cart).permit(:quantity)
   end
+
   def set_product_cart
-    @product_cart = ProductCart.find(params[:id])    
+    @product_cart = ProductCart.find(params[:id])
   end
 end

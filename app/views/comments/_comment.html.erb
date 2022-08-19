@@ -1,14 +1,18 @@
 <div id="comment-<%=comment.id%>">
+<div class='card shadow-lg p-3 mb-5 bg-white rounded'>
 <strong><%=comment.user.name%></strong><br>
-<%=comment.body%>
+<%=comment.body%><br>
 <%=comment.created_at.strftime("%I:%M :%p")%>
-
+ </div>
  <%if user_signed_in?%>
     <% if comment.user_id == current_user.id%>
-         <%=link_to "Edit",edit_product_comment_path(@product,comment)%>
-         <%=link_to "Delete",product_comment_path(@product,comment),method: :delete ,remote: true %>
+        <div class="d-flex justify-content-flex-start">
+        <div> <%=link_to "Edit",edit_product_comment_path(@product,comment),:class => "btn btn-secondary"%></div>
+        <div> <%=link_to "Delete",product_comment_path(@product,comment),method: :delete ,remote: true ,:class => "btn btn-secondary"%></div>
+        </div>
      <%end%>
   <%end%>
+ 
   <hr>
   <br> 
   </div>
