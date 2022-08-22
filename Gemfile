@@ -80,3 +80,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'cloudinary', '~> 1.23'
 
 gem 'faker', '~> 2.22'
+
+gem 'rails-controller-testing', '~> 1.0'
