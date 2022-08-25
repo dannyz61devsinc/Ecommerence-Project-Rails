@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
   validates :name, presence: true
-  
 
   has_one_attached :profile_image
   validate :check_image_type

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductCartController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index,:create]
 
   before_action :set_product_cart, only: %i[edit update destroy]
   before_action :find_product, only: [:create]

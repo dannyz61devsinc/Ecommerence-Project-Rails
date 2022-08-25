@@ -19,5 +19,4 @@ RSpec.describe ProductCart, type: :model do
     product_cart.product = nil
     expect(product_cart).to_not be_valid
   end
-
 end

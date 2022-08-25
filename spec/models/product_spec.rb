@@ -25,5 +25,4 @@ RSpec.describe Product, type: :model do
     product.price = nil
     expect(product).to_not be_valid
   end
-
 end
