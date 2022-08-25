@@ -3,21 +3,25 @@
 require 'rails_helper'
 
 RSpec.describe ProductCart, type: :model do
-  let(:product) { create :product }
-  let(:product_cart) { create :product_cart }
+  let!(:product_cart) { create :product_cart }
 
-  it 'is not valid with empty quantity' do
-    product_cart.quantity = nil
-    expect(product_cart).not_to be_valid
+  describe 'asoociation is valid with' do
+    it 'cart' do
+      should belong_to(:cart)
+    end
+
+    it 'Product' do
+      should belong_to(:product)
+    end
   end
 
-  it 'is not valid without cart' do
-    product_cart.cart = nil
-    expect(product_cart).not_to be_valid
-  end
+  describe 'attibutes' do
+    it 'is valid with quantity' do
+      should validate_presence_of(:quantity)
+    end
 
-  it 'is not valid without Product' do
-    product_cart.product = nil
-    expect(product_cart).not_to be_valid
+    it 'is valid with Unique Product' do
+      should validate_uniqueness_of(:product_id)
+    end
   end
 end

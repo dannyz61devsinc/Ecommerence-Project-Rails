@@ -3,15 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
-  let(:user) { create :user }
-  let(:cart) { create :cart }
+  describe 'asoociation is valid with' do
+    it 'User attributes' do
+      should belong_to(:user)
+    end
 
-  it 'is not valid without User attributes' do
-    cart.user = nil
-    expect(cart).not_to be_valid
-  end
+    it 'product_carts' do
+      should have_many(:product_carts)
+    end
 
-  it 'is  valid with User attributes' do
-    expect(cart).to be_valid
+    it 'products' do
+      should have_many(:products)
+    end
   end
 end

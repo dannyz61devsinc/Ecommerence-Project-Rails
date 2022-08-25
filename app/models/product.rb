@@ -2,8 +2,7 @@
 
 class Product < ApplicationRecord
   belongs_to :user
-  has_many :comments, dependent: :destroy, dependent: :destroy
-
+  has_many :comments, dependent: :destroy
   has_many :product_carts
   has_many :carts, through: :product_carts, dependent: :destroy
 

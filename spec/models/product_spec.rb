@@ -3,26 +3,28 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  let(:user) { create :user }
-  let(:product) { create :product }
 
-  it 'is not valid without name' do
-    product.name = ''
-    expect(product).not_to be_valid
+
+  describe 'asoociation is valid with' do
+    it 'User' do
+      should belong_to(:user)
+    end
   end
 
-  it 'is not valid without User' do
-    product.user = nil
-    expect(product).not_to be_valid
-  end
+  describe 'attribute' do
+    it 'is valid with images' do
+      should have_many_attached(:images)
+     end
+    it 'is valid with name' do
+      should validate_presence_of(:name)
+    end
 
-  it 'is not valid without description' do
-    product.description = ''
-    expect(product).not_to be_valid
-  end
+    it 'is valid with price' do
+      should validate_presence_of(:price)
+    end
 
-  it 'is not valid without price' do
-    product.price = nil
-    expect(product).not_to be_valid
+    it 'is valid with description' do
+      should validate_presence_of(:description)
+    end
   end
 end

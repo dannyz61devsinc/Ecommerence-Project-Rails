@@ -3,20 +3,36 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { create :user }
 
-  it 'is not valid without name' do
-    user.name = nil
-    expect(user).not_to be_valid
+  describe "association is valid with" do
+      it 'products' do 
+        should have_many(:products)  
+      end
+      it 'comments' do 
+        should have_many(:comments)  
+      end
+      it 'products' do 
+        should have_one(:cart)  
+      end
+      it 'orders' do 
+        should have_many(:orders)  
+      end
   end
 
-  it 'is not valid without email' do
-    user.email = nil
-    expect(user).not_to be_valid
-  end
+  describe 'attribute' do
+    it 'is valid with profile_image' do
+      should have_one_attached(:profile_image)
+     end
+    it 'is valid with name' do
+     should validate_presence_of(:name)
+    end
 
-  it 'is not valid without password' do
-    user.password = ''
-    expect(user).not_to be_valid
+    it 'is valid with email' do
+      should validate_presence_of(:email)
+    end
+
+    it 'is valid with password' do
+      should validate_presence_of(:password)
+    end
   end
 end

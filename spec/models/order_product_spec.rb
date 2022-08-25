@@ -3,16 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe OrderProduct, type: :model do
-  let(:product) { create :product }
-  let(:order_product) { create :order_product }
 
-  it 'is not valid without order' do
-    order_product.order = nil
-    expect(order_product).not_to be_valid
-  end
 
-  it 'is not valid without Product' do
-    order_product.product = nil
-    expect(order_product).not_to be_valid
+  describe 'association is valid with' do
+    it 'order' do
+      should belong_to(:order)
+    end
+
+    it 'Product' do
+      should belong_to(:product)
+    end
   end
 end

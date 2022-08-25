@@ -7,22 +7,19 @@ RSpec.describe Comment, type: :model do
   let(:product) { create :product }
   let(:comment) { create :comment }
 
-  it 'is not valid with empty body' do
-    comment.body = ''
-    expect(comment).not_to be_valid
+  describe 'association valid with' do
+    it 'User' do
+      should belong_to(:user)
+    end
+
+    it 'Product' do
+      should belong_to(:product)
+    end
   end
 
-  it 'is not valid without User' do
-    comment.user = nil
-    expect(comment).not_to be_valid
-  end
-
-  it 'is not valid without Product' do
-    comment.product = nil
-    expect(comment).not_to be_valid
-  end
-
-  it 'is valid with body' do
-    expect(comment).to be_valid
+  describe 'attributes' do
+    it 'is valid with body' do
+      should validate_presence_of(:body)
+    end
   end
 end
