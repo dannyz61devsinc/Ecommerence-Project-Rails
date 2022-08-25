@@ -8,11 +8,11 @@ RSpec.describe OrderProduct, type: :model do
 
   it 'is not valid without order' do
     order_product.order = nil
-    expect(order_product).to_not be_valid
+    expect(order_product).not_to be_valid
   end
 
   it 'is not valid without Product' do
     order_product.product = nil
-    expect(order_product).to_not be_valid
+    expect(order_product).not_to be_valid
   end
 end

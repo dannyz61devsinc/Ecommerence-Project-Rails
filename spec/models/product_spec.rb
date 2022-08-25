@@ -8,21 +8,21 @@ RSpec.describe Product, type: :model do
 
   it 'is not valid without name' do
     product.name = ''
-    expect(product).to_not be_valid
+    expect(product).not_to be_valid
   end
 
   it 'is not valid without User' do
     product.user = nil
-    expect(product).to_not be_valid
+    expect(product).not_to be_valid
   end
 
   it 'is not valid without description' do
     product.description = ''
-    expect(product).to_not be_valid
+    expect(product).not_to be_valid
   end
 
   it 'is not valid without price' do
     product.price = nil
-    expect(product).to_not be_valid
+    expect(product).not_to be_valid
   end
 end

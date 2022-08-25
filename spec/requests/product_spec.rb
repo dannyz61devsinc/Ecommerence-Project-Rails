@@ -22,7 +22,7 @@ RSpec.describe 'Products', type: :request do
     sign_in(user)
     params = { product: { name: 'test', description: 'test', price: 45 } }
     post product_index_path(params)
-    expect(response).to have_http_status(302)
+    expect(response).to have_http_status(:found)
   end
 
   it 'has to display Product' do
@@ -33,18 +33,18 @@ RSpec.describe 'Products', type: :request do
   it 'edit with User' do
     sign_in(user)
     patch product_path(product)
-    expect(response).to have_http_status(302)
+    expect(response).to have_http_status(:found)
   end
 
   it 'update with User' do
     sign_in(user)
     get edit_product_path(product)
-    expect(response).to have_http_status(302)
+    expect(response).to have_http_status(:found)
   end
 
   it 'destroy with User' do
     sign_in(user)
     delete product_path(product)
-    expect(response).to have_http_status(302)
+    expect(response).to have_http_status(:found)
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe Cart, type: :model do
 
   it 'is not valid without User attributes' do
     cart.user = nil
-    expect(cart).to_not be_valid
+    expect(cart).not_to be_valid
   end
 
   it 'is  valid with User attributes' do

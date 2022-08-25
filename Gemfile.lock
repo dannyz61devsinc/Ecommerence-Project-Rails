@@ -138,7 +138,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.16.3)
-    msgpack (1.5.4)
+    msgpack (1.5.6)
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.8)
@@ -235,6 +235,8 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     semantic_range (3.0.0)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     spring (1.7.2)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -246,7 +248,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stripe (7.0.0)
+    stripe (7.1.0)
     stripe-rails (2.3.4)
       rails (>= 5.1)
       responders
@@ -303,6 +305,7 @@ DEPENDENCIES
   ransack
   rspec-rails
   sass-rails (~> 5.0)
+  shoulda-matchers
   spring (~> 1.1)
   spring-watcher-listen (~> 2.0.0)
   stripe

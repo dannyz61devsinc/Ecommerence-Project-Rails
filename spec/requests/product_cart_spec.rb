@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'ProductCarts', type: :request do
@@ -5,33 +7,35 @@ RSpec.describe 'ProductCarts', type: :request do
   let(:product_cart) { create :product_cart }
   let(:user) { create :user }
 
-  context 'With User Sign in' do
-    before(:each) { sign_in(user) }
+  describe 'GET #index' do
+    context 'With User Sign in' do
+      before { sign_in(user) }
 
-    it 'get index' do
-      get product_cart_index_path
-      expect(response).to have_http_status(:success)
-      expect(response).to render_template(:index)
-    end
+      it 'get index' do
+        get product_cart_index_path
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:index)
+      end
 
-    it 'post create' do
-      post product_product_cart_index_path(product)
-      expect(response).to have_http_status(302)
-    end
+      it 'post create' do
+        post product_product_cart_index_path(product)
+        expect(response).to have_http_status(:found)
+      end
 
-    it 'patch edit' do
-      patch product_cart_path(product_cart)
-      expect(response).to have_http_status(302)
-    end
+      it 'patch edit' do
+        patch product_cart_path(product_cart)
+        expect(response).to have_http_status(:found)
+      end
 
-    it 'get update' do
-      get edit_product_cart_path(product_cart)
-      expect(response).to have_http_status(302)
-    end
+      it 'get update' do
+        get edit_product_cart_path(product_cart)
+        expect(response).to have_http_status(:found)
+      end
 
-    it 'delete destroy' do
-      delete product_cart_path(product_cart)
-      expect(response).to have_http_status(302)
+      it 'delete destroy' do
+        delete product_cart_path(product_cart)
+        expect(response).to have_http_status(:found)
+      end
     end
   end
 
@@ -44,7 +48,7 @@ RSpec.describe 'ProductCarts', type: :request do
 
     it 'post create' do
       post product_product_cart_index_path(product)
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
     end
 
     it 'patch Edit' do
