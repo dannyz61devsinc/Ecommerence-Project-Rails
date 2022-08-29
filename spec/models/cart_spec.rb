@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+
 RSpec.describe Cart, type: :model do
   describe 'asoociation is valid with' do
     it 'User attributes' do

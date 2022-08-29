@@ -76,3 +76,5 @@ gem 'cloudinary', '~> 1.23'
 gem 'faker', '~> 2.22'
 
 gem 'rails-controller-testing', '~> 1.0'
+
+gem "simplecov", "~> 0.21.2"

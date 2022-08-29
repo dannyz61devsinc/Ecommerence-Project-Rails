@@ -9,6 +9,22 @@ RSpec.describe Product, type: :model do
     it 'User' do
       should belong_to(:user)
     end
+
+    it 'Comments' do
+        should have_many(:comments)
+    end
+
+    it 'Product Carts' do
+      should have_many(:product_carts)
+    end
+
+    it 'Order_Product' do
+      should have_many(:order_products)
+    end
+
+    it 'Order' do
+      should have_many(:orders)
+    end
   end
 
   describe 'attribute' do
