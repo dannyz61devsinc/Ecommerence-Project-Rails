@@ -63,7 +63,9 @@ group :development do
 end
 
 group :test do
+  gem 'rails-controller-testing', '~> 1.0'
   gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.21.2'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
 end
@@ -74,7 +76,3 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'cloudinary', '~> 1.23'
 
 gem 'faker', '~> 2.22'
-
-gem 'rails-controller-testing', '~> 1.0'
-
-gem "simplecov", "~> 0.21.2"

@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :product_cart do
     association :cart, factory: :cart
     association :product, factory: :product
-    quantity { 1 }
+    quantity { Faker::Number.number(digits: 2) }
   end
 end

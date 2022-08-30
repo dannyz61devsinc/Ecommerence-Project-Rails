@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :comment do
     association :user, factory: :user
     association :product, factory: :product
-    body { 'comment' }
+    body { Faker::Lorem.word }
   end
 end
