@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe ProductCart, type: :model do
-  let!(:product_cart) { create :product_cart }
+  let!( :product_cart ) { create :product_cart }
 
   describe 'asoociation is valid with' do
     it 'cart' do

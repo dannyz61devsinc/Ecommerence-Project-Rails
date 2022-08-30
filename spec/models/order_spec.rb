@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-
   describe 'association is valid with' do
     it 'order' do
       should belong_to(:user)

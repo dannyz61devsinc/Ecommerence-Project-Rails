@@ -10,23 +10,17 @@ RSpec.describe 'ProductCarts', type: :request do
 
   describe 'GET #index' do
     context 'when User Sign in' do
-
       it 'get index' do
         sign_in(user)
-
         get product_cart_index_path
-        expect(response).to have_http_status(:success)
         expect(response).to render_template(:index)
       end
     end
 
     context 'when User Sign out ' do
-
       it 'get index' do
         sign_out(user)
-
         get product_cart_index_path
-        expect(response).to have_http_status(:success)
         expect(response).to render_template(:index)
       end
     end
@@ -40,6 +34,7 @@ RSpec.describe 'ProductCarts', type: :request do
         post product_product_cart_index_path(product)
         expect(response).to have_http_status(:found)
       end
+
       it 'post create with invalid product cart' do
         sign_in(user)
         post product_product_cart_index_path(product)
@@ -50,7 +45,6 @@ RSpec.describe 'ProductCarts', type: :request do
     end
 
     context 'when User Sign out' do
-
       it 'post create' do
         sign_out(user)
 
@@ -76,9 +70,8 @@ RSpec.describe 'ProductCarts', type: :request do
         sign_in(product_cart.cart.user)
         params = { product_cart: { quantity: 66 }, id: product_cart.id }
         patch product_cart_path(params)
-
         expect(response).to have_http_status(:found)
-      end 
+      end
 
       it 'patch invalid update' do
         sign_in(product_cart.cart.user)
@@ -100,11 +93,8 @@ RSpec.describe 'ProductCarts', type: :request do
       end
 
       it 'delete invalid destroy' do
-        product_c= create :product_cart
+        product_c = create :product_cart
         sign_in(product_c.cart.user)
-        product_c.product=nil
-        product_c.quantity=nil
-        product_c.cart=nil
         delete product_cart_path(product_c)
         expect(response).to have_http_status(:found)
       end
