@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let(:user) { create :user }
-  let(:product) { create :product }
-  let(:comment) { create :comment }
-
   describe 'association valid with' do
     it 'User' do
       should belong_to(:user)

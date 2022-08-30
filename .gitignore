@@ -8,6 +8,7 @@
 /coverage
 # Ignore Cache Folder
 /vendor
+/Gemfile.lock
 
 # Ignore bundler config.
 /.bundle
