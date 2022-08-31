@@ -50,7 +50,7 @@ RSpec.describe 'ProductCarts', type: :request do
     end
 
     context 'when User Sign out' do
-      it 'post create' do
+      it 'should post create' do
         sign_out(user)
         post product_product_cart_index_path(product)
         expect(response).to have_http_status(:found)
