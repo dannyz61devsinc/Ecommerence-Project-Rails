@@ -9,7 +9,7 @@ RSpec.describe Product, type: :model do
     end
 
     it 'Comments' do
-        should have_many(:comments)
+      should have_many(:comments)
     end
 
     it 'Product Carts' do

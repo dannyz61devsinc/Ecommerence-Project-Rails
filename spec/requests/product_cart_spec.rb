@@ -30,7 +30,7 @@ RSpec.describe 'ProductCarts', type: :request do
 
   describe 'Post #create' do
     context 'when User Sign in' do
-      it 'post create' do 
+      it 'should create post' do 
         sign_in(user)
         post product_product_cart_index_path(product)
         expect(response).to have_http_status(:found)
