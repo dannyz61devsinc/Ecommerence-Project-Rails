@@ -35,19 +35,19 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid with wrong Picture format' do
-      user1= User.create(name: 'kkk' ,email: 'lagah@gmail.com',password: 876356473)
+      user1 = create :user
       user1.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/index.html')),
       filename: 'index.html')
       expect(user1).to_not be_valid
     end
 
     it 'should return email' do
-      user1=User.create(name: 'kkk' ,email: 'lagah@gmail.com',password: 876356473)
-      expect(user1.to_s).to eq('lagah@gmail.com')
+      user1 = create :user
+      expect(user1.to_s).to eq(user1.email)
     end
 
     it 'show default image' do
-      user1 = User.create(name: 'kkk' ,email: 'lagah@gmail.com',password: 876356473)
+      user1=create(:user,profile_image: nil)
       expect(user1.profile_image_thumbnail).to eq('/default_profile.jpg')
     end
   end

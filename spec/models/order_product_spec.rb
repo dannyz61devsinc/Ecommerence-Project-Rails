@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe OrderProduct, type: :model do
-  let( :order_product ) { create :order_product }
-
   describe 'association is valid with' do
     it 'order' do
       should belong_to(:order)
