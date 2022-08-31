@@ -39,6 +39,7 @@ RSpec.describe User, type: :model do
       user1.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/index.html')),
       filename: 'index.html')
       expect(user1).to_not be_valid
+      expect(user1.errors[:profile_image]).to include('must be a JPEG or PNG')
     end
 
     it 'should return email' do
