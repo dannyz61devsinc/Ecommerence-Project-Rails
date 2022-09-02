@@ -10,7 +10,7 @@ RSpec.describe 'ProductCarts', type: :request do
 
   describe 'GET #index' do
     context 'when User Sign in' do
-      it 'get index' do
+      it 'display all product in carts' do
         sign_in(user)
         get product_cart_index_path
         expect(response).to have_http_status(:ok)
@@ -19,7 +19,7 @@ RSpec.describe 'ProductCarts', type: :request do
     end
 
     context 'when User Sign out ' do
-      it 'get index' do
+      it 'display all product in carts' do
         sign_out(user)
         get product_cart_index_path
         expect(response).to have_http_status(:ok)
@@ -30,7 +30,7 @@ RSpec.describe 'ProductCarts', type: :request do
 
   describe 'Post #create' do
     context 'when User Sign in' do
-      it 'should create post' do 
+      it 'add product in cart ' do 
         sign_in(user)
         post product_product_cart_index_path(product)
         expect(response).to have_http_status(:found)
@@ -40,7 +40,7 @@ RSpec.describe 'ProductCarts', type: :request do
 
       end
 
-      it 'post create with invalid product cart' do
+      it 'not add product in product cart' do
         sign_in(user)
         post product_product_cart_index_path(product)
         post product_product_cart_index_path(product)
@@ -50,7 +50,7 @@ RSpec.describe 'ProductCarts', type: :request do
     end
 
     context 'when User Sign out' do
-      it 'should post create' do
+      it 'add product in cart' do
         sign_out(user)
         post product_product_cart_index_path(product)
         expect(response).to have_http_status(:found)
@@ -63,28 +63,29 @@ RSpec.describe 'ProductCarts', type: :request do
 
   describe 'get #Edit' do
     context 'when User Sign in' do
-      it 'get edit' do
+      it 'get edit form' do
         sign_in(product_cart.cart.user)
         get edit_product_cart_path(product_cart)
         expect(response).to have_http_status(:ok)
+        expect(response).to render_template(:edit)
       end
     end
   end
 
   describe 'Patch #update' do
     context 'when User Sign in' do
-      it 'patch update' do
+      it 'update quantity of ProductCart' do
         sign_in(product_cart.cart.user)
         params = { product_cart: { quantity: Faker::Number.number(digits: 2) },id: product_cart.id }
         patch product_cart_path(params)
-        p=ProductCart.find(product_cart.id)
+        p = ProductCart.find(product_cart.id)
         expect(response).to have_http_status(:found)
         expect(flash[:notice]).to eq('Successfully updated')
         expect(p.quantity).to eq(params[:product_cart][:quantity])
 
       end
 
-      it 'patch invalid update' do
+      it 'not update quantity of ProductCart' do
         sign_in(product_cart.cart.user)
         params = { product_cart: { quantity: nil }, id: product_cart.id }
         patch product_cart_path(params)
@@ -96,16 +97,16 @@ RSpec.describe 'ProductCarts', type: :request do
 
   describe 'Delete #destroy' do
     context 'when User Sign in' do
-      it 'delete destroy' do
+      it 'delete ProductCart' do
         sign_in(product_cart.cart.user)
         c = ProductCart.count
         delete product_cart_path(product_cart)
         expect(response).to have_http_status(:found)
         expect(flash[:notice]).to eq('cart was Deleted.')
-        expect(ProductCart.count).to eq(c-1)
+        expect(ProductCart.count).to eq(c - 1)
       end
 
-      it 'delete invalid destroy' do
+      it 'not delete ProductCart' do
         sign_in(product_cart.cart.user)
         delete product_cart_path(product_cart)
         expect(response).to have_http_status(:found)
