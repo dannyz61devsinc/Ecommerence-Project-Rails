@@ -89,8 +89,10 @@ RSpec.describe 'ProductCarts', type: :request do
         sign_in(product_cart.cart.user)
         params = { product_cart: { quantity: nil }, id: product_cart.id }
         patch product_cart_path(params)
+        p = ProductCart.find(product_cart.id)
         expect(flash[:notice]).to eq('Failed updation')
         expect(response).to have_http_status(:found)
+        expect(p.quantity).to_not eq(nil)
       end 
     end
   end
@@ -107,9 +109,11 @@ RSpec.describe 'ProductCarts', type: :request do
       end
 
       it 'not delete ProductCart' do
-        sign_in(product_cart.cart.user)
-        delete product_cart_path(product_cart)
+        sign_in(user)
+        c = ProductCart.count
+        delete product_cart_path(id: 45)
         expect(response).to have_http_status(:found)
+        expect(ProductCart.count).to eq(c)
       end
     end
   end
