@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'show default image' do
-      user1=create(:user,profile_image: nil)
+      user1 = create(:user,profile_image: nil)
       expect(user1.profile_image_thumbnail).to eq('/default_profile.jpg')
     end
   end
