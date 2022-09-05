@@ -5,13 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 gem 'image_processing', '~>1.2'
-# group :development, :test do
-#   gem 'rubocop'
-#   gem 'rubocop-performance'
-#   gem 'rubocop-rails'
-#   gem 'rubocop-minitest'
-#   gem 'rubocop-rspec' # or gem 'rubocop-rspec' depending on your test suite
-# end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
@@ -49,10 +42,16 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pundit'
 group :development, :test do
+  gem 'rails-controller-testing', '~> 1.0'
+  gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.21.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
 end
 
 gem 'ransack'
@@ -61,6 +60,7 @@ gem 'stripe-rails'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 group :development do
+  
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'

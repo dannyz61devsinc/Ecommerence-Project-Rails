@@ -18,8 +18,8 @@ class WebhooksController < ApplicationController
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
-      puts 'Signature error'
-      p e
+      Rails.logger.debug 'Signature error'
+      Rails.logger.debug e
       return
     end
 
